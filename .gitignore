@@ -9,4 +9,5 @@
 /tmp/
 
 *.gem
+*.gemfile.lock
 .idea
