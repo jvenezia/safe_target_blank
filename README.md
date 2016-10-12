@@ -1,29 +1,49 @@
 # SafeTargetBlank
+[![Gem Version](https://badge.fury.io/rb/safe_target_blank.svg)](http://badge.fury.io/rb/safe_target_blank)
+[![Build](https://travis-ci.org/jvenezia/safe_target_blank.svg?branch=master)](https://travis-ci.org/jvenezia/safe_target_blank)
+[![Coverage Status](https://coveralls.io/repos/github/jvenezia/safe_target_blank/badge.svg?branch=master)](https://coveralls.io/github/jvenezia/safe_target_blank?branch=master)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/safe_target_blank`. To experiment with that code, run `bin/console` for an interactive prompt.
+SafeTargetBlank will secure your rails Application use of `link_to` helper.
 
-TODO: Delete this and the text above, and describe your gem
+If you use the `target="_blank"` attribute on a link, you are leaving your users open to a very simple phishing attack.
+Adding `rel="noopener noreferrer"` on those links will prevent this vulnerability.
+
+Read more about this issue here:
+- https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+- https://dev.to/ben/the-targetblank-vulnerability-by-example
 
 ## Installation
-
 Add this line to your application's Gemfile:
 
     gem 'safe_target_blank'
 
-Or install it yourself as:
+Now each time you use the `link_to` helper with `target="_blank"`, `rel="noopener noreferrer"` will be added.
+ 
+```ruby
+link_to 'Safe', 'safe.io', taget: :_blank
+#=> '<a target="_blank" rel="noopener noreferrer" href="safe.io">Safe</a>'
+``` 
 
-    $ gem install safe_target_blank
+You can opt out with `opener` and `referrer` options.
 
-## Development
+```ruby
+link_to 'Safe', 'safe.io', taget: :_blank, referrer: true
+#=> '<a target="_blank" rel="noopener" href="safe.io">Safe</a>'
+``` 
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Or disable it globally.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+SafeTargetBlank.opener = true
+link_to 'Safe', 'safe.io', taget: :_blank
+#=> '<a target="_blank" rel="noreferrer" href="safe.io">Safe</a>'
+``` 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/safe_target_blank. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/safe_target_blank. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
