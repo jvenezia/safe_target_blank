@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ActionView::Helpers::UrlHelper do
-  it { expect(SafeTargetBlank::VERSION).not_to be nil }
   before { SafeTargetBlank.opener = nil }
   before { SafeTargetBlank.opener = nil }
 
