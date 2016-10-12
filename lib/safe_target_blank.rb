@@ -1,5 +1,4 @@
 require 'action_view'
-include ActionView::Helpers::UrlHelper
 
 require 'safe_target_blank/version'
 require 'safe_target_blank/url_helper'

@@ -1,4 +1,5 @@
 require 'spec_helper'
+include ActionView::Helpers::UrlHelper
 
 describe ActionView::Helpers::UrlHelper do
   before { SafeTargetBlank.opener = nil }
