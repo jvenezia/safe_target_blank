@@ -20,14 +20,14 @@ Add this line to your application's Gemfile:
 Now each time you use the `link_to` helper with `target="_blank"`, `rel="noopener noreferrer"` will be added.
  
 ```ruby
-link_to 'Safe', 'safe.io', taget: :_blank
+link_to 'Safe', 'safe.io', target: :_blank
 #=> '<a target="_blank" rel="noopener noreferrer" href="safe.io">Safe</a>'
 ``` 
 
 You can opt out with `opener` and `referrer` options.
 
 ```ruby
-link_to 'Safe', 'safe.io', taget: :_blank, referrer: true
+link_to 'Safe', 'safe.io', target: :_blank, referrer: true
 #=> '<a target="_blank" rel="noopener" href="safe.io">Safe</a>'
 ``` 
 
@@ -35,7 +35,7 @@ Or disable it globally.
 
 ```ruby
 SafeTargetBlank.opener = true
-link_to 'Safe', 'safe.io', taget: :_blank
+link_to 'Safe', 'safe.io', target: :_blank
 #=> '<a target="_blank" rel="noreferrer" href="safe.io">Safe</a>'
 ``` 
 
