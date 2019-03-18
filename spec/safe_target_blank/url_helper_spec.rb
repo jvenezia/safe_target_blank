@@ -21,6 +21,9 @@ describe ActionView::Helpers::UrlHelper do
       it { expect(link_to 'Safe', 'safe.io', target: :_blank, opener: true).to eq '<a target="_blank" rel="noreferrer" href="safe.io">Safe</a>' }
       it { expect(link_to 'Safe', 'safe.io', target: :_blank, referrer: true).to eq '<a target="_blank" rel="noopener" href="safe.io">Safe</a>' }
       it { expect(link_to 'Safe', 'safe.io', target: :_blank, opener: true, referrer: true).to eq '<a target="_blank" href="safe.io">Safe</a>' }
+
+      it { expect(link_to 'Safe', 'safe.io', target: :_self, method: :post).to eq '<a target="_self" rel="nofollow" data-method="post" href="safe.io">Safe</a>' }
+      it { expect(link_to 'Safe', 'safe.io', target: :_blank, method: :post).to eq '<a target="_blank" rel="noopener noreferrer nofollow" data-method="post" href="safe.io">Safe</a>' }
     end
 
     context 'opener enabled' do
